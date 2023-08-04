@@ -54,6 +54,13 @@ TPTab:AddButton({
 	end
 })
 
+TPTab:AddButton({
+	Name = "Lid",
+	Callback = function()
+		HumanoidRootPart.CFrame = CFrame.new(129, 3, -125)
+	end    
+})
+
 local Section_2 = TPTab:AddSection({
 	Name = "Somthing Else",
 })
@@ -155,6 +162,13 @@ GiveTool:AddButton({
 	end
 })
 
+GiveTool:AddButton({
+	Name = "MedKit",
+	Callback = function()
+		game:GetService("ReplicatedStorage").RemoteEvents.GiveTool:FireServer("MedKit")
+	end
+})
+
 local localPlayerScripts = Window:MakeTab({
 	Name = "local Player",
 	Icon = "rbxassetid://4483345998",
@@ -206,4 +220,46 @@ localPlayerScripts:AddSlider({
 	Callback = function(t)
 		game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = t
 	end    
+})
+
+local Events = Window:MakeTab({
+	Name = "Events",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Events:AddButton({
+	Name = "Best Friend Cat",
+	Callback = function()
+	
+		local args = {
+    [1] = 244,
+    [2] = true
+}
+
+game:GetService("ReplicatedStorage").RemoteEvents.DoDialogue:FireServer(unpack(args))
+
+
+
+game:GetService("ReplicatedStorage").RemoteEvents.Cattery:FireServer()
+	end
+})
+
+local BuyItems = Window:MakeTab({
+	Name = "BuyItems",
+	Icon = nil,
+	PremiumOnly = false
+})
+
+BuyItems:AddButton({
+	Name = "Pan",
+	Callback = function()
+		
+		local args = {
+			[1] = "Pan",
+			[2] = 0
+		}
+		
+		game:GetService("ReplicatedStorage").RemoteEvents.BuyItem:FireServer(unpack(args))
+	end
 })
