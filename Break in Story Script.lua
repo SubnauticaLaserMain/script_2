@@ -1,5 +1,7 @@
 local HumanoidRootPart = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
 local UIS = game:GetService'UserInputService'
+local Sound = Instance.new("Sound")
+Sound.Parent = workspace
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
@@ -210,9 +212,9 @@ localPlayerScripts:AddSlider({
 })
 
 localPlayerScripts:AddSlider({
-	Name = "JumpPower",
+	Name = "WalkSpeed",
 	Min = 15,
-	Max = 100,
+	Max = 500,
 	Default = 15,
 	Color = Color3.fromRGB(255,255,255),
 	Increment = 1,
@@ -262,4 +264,118 @@ BuyItems:AddButton({
 		
 		game:GetService("ReplicatedStorage").RemoteEvents.BuyItem:FireServer(unpack(args))
 	end
+})
+
+local SongBeatsTab = Window:MakeTab({
+	Name = "SongBeats",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+SongBeatsTab:AddButton({
+	Name = "Tarantella Napoletana",
+	Callback = function()
+		Sound.SoundId = "rbxassetid://1846507211"
+		wait(.10)
+		Sound:Play()
+	end
+})
+
+SongBeatsTab:AddButton({
+	Name = "Tense Stories",
+	Callback = function()
+		Sound.SoundId = "rbxassetid://1836050803"
+		wait(.10)
+		Sound:Play()
+	end
+})
+
+SongBeatsTab:AddButton({
+	Name = "Relaxed Scene",
+	Callback = function()
+		Sound.SoundId = "rbxassetid://1848354536"
+		wait(.10)
+		Sound:Play()
+	end
+})
+
+SongBeatsTab:AddButton({
+	Name = "Happy Song",
+	Callback = function()
+		Sound.SoundId = "rbxassetid://1843404009"
+		wait(.10)
+		Sound:Play()
+	end
+})
+
+SongBeatsTab:AddButton({
+	Name = "Parry Gripp - Raining Tacos",
+	Callback = function()
+		Sound.SoundId = "rbxassetid://142376088"
+		wait(.10)
+		Sound:Play()
+	end
+})
+
+SongBeatsTab:AddButton({
+	Name = "Halloween Horrors Waltz",
+	Callback = function()
+		Sound.SoundId = "rbxassetid://1836009626"
+		wait(.10)
+		Sound:Play()
+	end
+})
+
+SongBeatsTab:AddButton({
+	Name = "Life in an Elevator",
+	Callback = function()
+		Sound.SoundId = "rbxassetid://1841647093"
+		wait(.10)
+		Sound:Play()
+	end
+})
+
+SongBeatsTab:AddLabel("Custom Player Config")
+
+SongBeatsTab:AddTextbox({
+	Name = "Enter Sound ID | Numbers",
+	Default = "default box input",
+	TextDisappear = false, 
+	Callback = function(Value)
+		Sound.SoundId = "rbxassetid://"..Value
+	end
+})
+
+SongBeatsTab:AddButton({
+	Name = "Play",
+	Callback = function()
+		Sound:Play()
+	end
+})
+
+local Settings = Window:MakeTab({
+	Name = "Settings",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Settings:AddSlider({
+	Name = "Sound Volume",
+	Min = 0,
+	Max = 10,
+	Default = 1,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	Callback = function(Value)
+		Sound.Volume = Value
+	end    
+})
+
+Settings:AddToggle({
+	Name = "PlayLooped Enabled",
+	Default = false,
+	Callback = function(Value)
+		Sound.PlaybackRegionsEnabled = Value
+		Sound.Looped = Value
+	end    
 })
