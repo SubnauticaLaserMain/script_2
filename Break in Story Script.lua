@@ -1,7 +1,6 @@
 local HumanoidRootPart = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
 local UIS = game:GetService'UserInputService'
 local Sound = Instance.new("Sound")
-if game:IsLoaded() then
 Sound.Parent = workspace
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
@@ -380,29 +379,21 @@ Settings:AddToggle({
 		Sound.Looped = Value
 	end    
 })
-end
+
 if game:IsLoaded() then
-	game:GetService('TestService'):Message("\[ServerScriptAPI]: game Loaded!")
+	print("[ServerScriptAPI]: game is Loaded!")
 end
 
 if not game:IsLoaded() then
-	warn("[ServerScriptAPI]: game isent Loaded!")
+	warn("[ServerScriptAPI]: game isent Loaded")
 end
 
 if game.Players then
-	game:GetService('TestService'):Message("\[ServerScriptAPI]: Players Loaded!")
+	print("[ServerScriptAPI]: Players are Loaded!")
 end
 
-if not game.Players then
-	warn("[ServerScriptAPI]: Players isent Loaded!")
+if not game.Players.LocalPlayer then
+	warn("[ServerScriptAPI]: LocalPlayer isent Loaded!")
 end
 
-if Sound then
-	game:GetService('TestService'):Message("\[ServerScriptAPI]: Sound Loaded!")
-end
-
-if not Sound then
-	warn("[ServerScriptAPI]: Sound was not Found!. og SongBeats will not be Functinal")
-end
-
-print("\[ServerScriptAPI]: if your not inside the Discord Server then Join it NOW!: https://discord.gg/Cre8ejpQ")
+game:GetService('TestService'):Message("\n[ServerScript_DiscordAPI]: Remember to join the Discord Server :) : https://discord.gg/Cre8ejpQ")
