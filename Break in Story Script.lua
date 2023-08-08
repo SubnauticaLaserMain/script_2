@@ -5,7 +5,7 @@ Sound.Parent = workspace
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
-local Window = OrionLib:MakeWindow({Name = "Server Script Pre-Release", HidePremium = false, SaveConfig = true, ConfigFolder = "ServerConfig"})
+local Window = OrionLib:MakeWindow({Name = "Server Script", HidePremium = false, SaveConfig = true, ConfigFolder = "ServerConfig"})
 
 local TPTab = Window:MakeTab({
 	Name = "TP",
